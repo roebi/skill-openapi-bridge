@@ -30,7 +30,7 @@ jobs:
       - name: Audit dependencies
         run: |
           uv pip install --no-cache "pip-audit==2.10.0"
-          pip-audit --skip-editable
+          uv run pip-audit --skip-editable
           uv pip uninstall pip-audit
 
       - name: Run tests
