@@ -1,0 +1,472 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "brainstorming-topic-dialog-creative-mentor-en",
+    "description": "Agent skill: brainstorming-topic-dialog-creative-mentor-en",
+    "version": "1.0.0+abc123def4",
+    "x-skill-name": "brainstorming-topic-dialog-creative-mentor-en",
+    "x-skill-version": "1.0.0",
+    "x-skill-license": "CC BY-NC-SA 4.0",
+    "x-skill-source-repo": "https://github.com/roebi/agent-skills",
+    "x-skill-source-commit": "abc123def456abc123def456abc123def456ab12",
+    "x-skill-source-path": "skills/brainstorming-topic-dialog-creative-mentor-en",
+    "x-skill-generated-at": "2026-04-03T10:00:00Z"
+  },
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "HATEOAS root \u2014 list of available skills with full URLs",
+        "responses": {
+          "200": {
+            "description": "Skill index",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "name": "brainstorming-topic-dialog-creative-mentor-en",
+                    "description": "Creative brainstorming mentor for structured topic exploration.",
+                    "href": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/",
+                    "skill_md": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md",
+                    "to_prompt": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/to-prompt",
+                    "validate": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/validate"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list": {
+      "get": {
+        "summary": "Human-readable list of all served skills",
+        "responses": {
+          "200": {
+            "description": "HTML or plain-text skill list",
+            "content": {
+              "text/html": {
+                "example": "<ul><li><a href='/brainstorming-topic-dialog-creative-mentor-en/'>brainstorming-topic-dialog-creative-mentor-en</a></li></ul>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/to-prompt": {
+      "get": {
+        "summary": "available_skills XML for all served skills",
+        "responses": {
+          "200": {
+            "description": "XML block for agent context injection",
+            "content": {
+              "application/xml": {
+                "example": "<available_skills>\n  <skill>\n    <n>brainstorming-topic-dialog-creative-mentor-en</n>\n    <description>Creative brainstorming mentor.</description>\n    <location>http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md</location>\n  </skill>\n</available_skills>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/to-conventions": {
+      "get": {
+        "summary": "Markdown conventions block for all served skills",
+        "responses": {
+          "200": {
+            "description": "Markdown block for CONVENTIONS.md injection",
+            "content": {
+              "text/markdown": {
+                "example": "## Available Agent Skills\n\n### brainstorming-topic-dialog-creative-mentor-en\nCreative brainstorming mentor.\nLocation: http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/validate": {
+      "get": {
+        "summary": "Validate all served skills",
+        "responses": {
+          "200": {
+            "description": "JSON array of validation results",
+            "content": {
+              "application/json": {
+                "example": {
+                  "validated_at": "2026-04-03T10:00:00Z",
+                  "results": [
+                    {
+                      "valid": true,
+                      "skill": "brainstorming-topic-dialog-creative-mentor-en",
+                      "errors": [],
+                      "warnings": []
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/meta": {
+      "get": {
+        "summary": "Frontmatter metadata for all served skills",
+        "responses": {
+          "200": {
+            "description": "JSON map of skill name to frontmatter",
+            "content": {
+              "application/json": {
+                "example": {
+                  "brainstorming-topic-dialog-creative-mentor-en": {
+                    "name": "brainstorming-topic-dialog-creative-mentor-en",
+                    "version": "1.0.0",
+                    "license": "CC BY-NC-SA 4.0",
+                    "description": "Creative brainstorming mentor."
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pin": {
+      "get": {
+        "summary": "Source pin information for all served skills",
+        "responses": {
+          "200": {
+            "description": "JSON map of skill name to pin info",
+            "content": {
+              "application/json": {
+                "example": {
+                  "brainstorming-topic-dialog-creative-mentor-en": {
+                    "repo": "https://github.com/roebi/agent-skills",
+                    "commit": "abc123def456abc123def456abc123def456ab12",
+                    "path": "skills/brainstorming-topic-dialog-creative-mentor-en",
+                    "generated_at": "2026-04-03T10:00:00Z"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/find/{partial_name}": {
+      "get": {
+        "summary": "Fuzzy redirect to best matching skill SKILL.md",
+        "parameters": [
+          {
+            "name": "partial_name",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "brainstorming"
+          }
+        ],
+        "responses": {
+          "302": {
+            "description": "Redirect to best matching skill SKILL.md",
+            "headers": {
+              "Location": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md"
+              }
+            }
+          },
+          "404": {
+            "description": "No matching skill found"
+          }
+        }
+      }
+    },
+    "/schema/openapi.json": {
+      "get": {
+        "summary": "OpenAPI spec for all routes",
+        "responses": {
+          "200": {
+            "description": "OpenAPI 3.1.0 JSON spec",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/schema/swagger": {
+      "get": {
+        "summary": "Swagger UI",
+        "responses": {
+          "200": {
+            "description": "Swagger UI HTML",
+            "content": {
+              "text/html": {
+                "example": "<html>Swagger UI</html>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/": {
+      "get": {
+        "summary": "Top-level entries for brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "JSON list of top-level entries",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "name": "SKILL.md",
+                    "href": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md",
+                    "sha256": "c13ee1293a25f478619cb11935ab450bde2fe5221f29e06a0bd8e5b67b813ba1"
+                  },
+                  {
+                    "name": "references/",
+                    "href": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/references/"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/SKILL.md": {
+      "get": {
+        "summary": "SKILL.md content",
+        "responses": {
+          "200": {
+            "description": "SKILL.md plain text content",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "\"sha256:c13ee1293a25f478619cb11935ab450bde2fe5221f29e06a0bd8e5b67b813ba1\""
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "immutable, max-age=31536000"
+                }
+              },
+              "X-Skill-Name": {
+                "schema": {
+                  "type": "string",
+                  "example": "brainstorming-topic-dialog-creative-mentor-en"
+                }
+              },
+              "X-Skill-Commit": {
+                "schema": {
+                  "type": "string",
+                  "example": "abc123def456abc123def456abc123def456ab12"
+                }
+              },
+              "X-Content-SHA256": {
+                "schema": {
+                  "type": "string",
+                  "example": "c13ee1293a25f478619cb11935ab450bde2fe5221f29e06a0bd8e5b67b813ba1"
+                }
+              }
+            },
+            "content": {
+              "text/markdown": {
+                "example": "---\nname: brainstorming-topic-dialog-creative-mentor-en\nversion: 1.0.0\ndescription: >\n  Creative brainstorming mentor for structured topic exploration.\n  Use when the user wants to brainstorm, explore ideas, or needs\n  a structured creative dialog around a topic.\nlicense: CC BY-NC-SA 4.0\nmetadata:\n  author: roebi\n  spec: https://agentskills.io/specification\n---\n\n# Brainstorming Topic Dialog Creative Mentor\n\nA structured creative brainstorming mentor skill.\n\n## When to use this skill\n\nUse when the user wants to explore a topic creatively or needs\na brainstorming partner.\n\n## References\n\nSee `references/mentor-framework.md` for the full framework.\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/references/": {
+      "get": {
+        "summary": "List reference files",
+        "responses": {
+          "200": {
+            "description": "JSON list of reference filenames",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "name": "mentor-framework.md",
+                    "href": "http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/references/mentor-framework.md",
+                    "sha256": "1f97fd30c64544671bb05d4f13f26615a8197d3250da1ca3a5f17c333c35d3cf"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/references/mentor-framework.md": {
+      "get": {
+        "summary": "references/mentor-framework.md content",
+        "responses": {
+          "200": {
+            "description": "Reference file content",
+            "headers": {
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "\"sha256:1f97fd30c64544671bb05d4f13f26615a8197d3250da1ca3a5f17c333c35d3cf\""
+                }
+              },
+              "Cache-Control": {
+                "schema": {
+                  "type": "string",
+                  "example": "immutable, max-age=31536000"
+                }
+              },
+              "X-Skill-Commit": {
+                "schema": {
+                  "type": "string",
+                  "example": "abc123def456abc123def456abc123def456ab12"
+                }
+              },
+              "X-Content-SHA256": {
+                "schema": {
+                  "type": "string",
+                  "example": "1f97fd30c64544671bb05d4f13f26615a8197d3250da1ca3a5f17c333c35d3cf"
+                }
+              }
+            },
+            "content": {
+              "text/markdown": {
+                "example": "# Mentor Framework\n\n## Core principles\n\n1. Listen first\n2. Reflect back\n3. Expand and diverge\n4. Converge on insights\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/to-prompt": {
+      "get": {
+        "summary": "available_skills XML for brainstorming-topic-dialog-creative-mentor-en only",
+        "responses": {
+          "200": {
+            "description": "XML block for this skill",
+            "content": {
+              "application/xml": {
+                "example": "<available_skills>\n  <skill>\n    <n>brainstorming-topic-dialog-creative-mentor-en</n>\n    <description>Creative brainstorming mentor.</description>\n    <location>http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md</location>\n  </skill>\n</available_skills>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/to-conventions": {
+      "get": {
+        "summary": "Markdown conventions block for brainstorming-topic-dialog-creative-mentor-en only",
+        "responses": {
+          "200": {
+            "description": "Markdown conventions block",
+            "content": {
+              "text/markdown": {
+                "example": "## Available Agent Skills\n\n### brainstorming-topic-dialog-creative-mentor-en\nCreative brainstorming mentor.\nLocation: http://localhost:8080/brainstorming-topic-dialog-creative-mentor-en/SKILL.md\n"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/validate": {
+      "get": {
+        "summary": "Validate brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "JSON validation result",
+            "content": {
+              "application/json": {
+                "example": {
+                  "valid": true,
+                  "skill": "brainstorming-topic-dialog-creative-mentor-en",
+                  "checked_at": "2026-04-03T10:00:00Z",
+                  "errors": [],
+                  "warnings": []
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/meta": {
+      "get": {
+        "summary": "Frontmatter metadata for brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "JSON frontmatter",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "brainstorming-topic-dialog-creative-mentor-en",
+                  "version": "1.0.0",
+                  "license": "CC BY-NC-SA 4.0",
+                  "description": "Creative brainstorming mentor."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/pin": {
+      "get": {
+        "summary": "Source pin for brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "JSON pin info",
+            "content": {
+              "application/json": {
+                "example": {
+                  "repo": "https://github.com/roebi/agent-skills",
+                  "commit": "abc123def456abc123def456abc123def456ab12",
+                  "path": "skills/brainstorming-topic-dialog-creative-mentor-en",
+                  "generated_at": "2026-04-03T10:00:00Z"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/schema/openapi.json": {
+      "get": {
+        "summary": "OpenAPI spec scoped to brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "OpenAPI 3.1.0 JSON spec for this skill",
+            "content": {
+              "application/json": {
+                "example": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/brainstorming-topic-dialog-creative-mentor-en/schema/swagger": {
+      "get": {
+        "summary": "Swagger UI scoped to brainstorming-topic-dialog-creative-mentor-en",
+        "responses": {
+          "200": {
+            "description": "Swagger UI HTML",
+            "content": {
+              "text/html": {
+                "example": "<html>Swagger UI</html>"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
