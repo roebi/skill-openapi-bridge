@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """skill-openapi-bridge CLI."""
 
 import typer
@@ -19,25 +20,23 @@ def version() -> None:
 @app.command()
 def serve(
     spec: str = typer.Argument(..., help="Path to <skillname>-openapi-spec.json"),
-    port: int = typer.Option(0, "--port", "-p", help="Port to listen on (0 = auto-select free port)"),
+    port: int = typer.Option(0, "--port", "-p", help="Port (0 = auto-select free port)"),
     host: str = typer.Option("127.0.0.1", "--host", "-h", help="Host to bind to"),
 ) -> None:
     """Serve a skill OpenAPI spec as a local HTTP server.
 
-    The server exposes the skill content following Progressive Disclosure:
+    Exposes all approved routes following Progressive Disclosure:
 
     \b
-      GET /          -> Discovery  (SKILL.md content)
-      GET /scripts/  -> Loading    (script files)
-      GET /references/ -> Loading  (reference files)
+      GET /                        -> HATEOAS root
+      GET /<skill>/SKILL.md        -> SKILL.md content
+      GET /<skill>/references/     -> reference file listing
+      GET /to-prompt               -> <available_skills> XML
+      GET /validate                -> validation results
+      ...and more (GET /list for full route list)
     """
-    typer.echo(f"skill-openapi-bridge v{__version__}")
-    typer.echo(f"spec: {spec}")
-    typer.echo(f"host: {host}  port: {port}")
-    typer.echo("")
-    typer.echo("serve command is not yet implemented — coming in v0.2.0")
-    typer.echo("See: https://github.com/roebi/skill-openapi-bridge")
-    raise typer.Exit(code=1)
+    from skill_openapi_bridge.server import serve as _serve
+    _serve(spec_path=spec, host=host, port=port)
 
 
 if __name__ == "__main__":

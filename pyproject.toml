@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "skill-openapi-bridge"
-version = "0.1.0"
+version = "0.2.0"
 description = "Bridge between agentskills.io SKILL.md packages and a local OpenAPI server"
 readme = "README.md"
 license = { text = "MIT" }

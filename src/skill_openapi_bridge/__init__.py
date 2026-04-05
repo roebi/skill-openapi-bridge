@@ -1,3 +1,2 @@
-"""skill-openapi-bridge — bridge between agentskills.io skills and a local OpenAPI server."""
-
-__version__ = "0.1.0"
+"""skill-openapi-bridge."""
+__version__ = "0.2.0"
