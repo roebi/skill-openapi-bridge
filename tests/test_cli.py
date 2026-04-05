@@ -1,4 +1,4 @@
-"""Smoke tests for skill-openapi-bridge v0.1.0."""
+"""Smoke tests for skill-openapi-bridge v0.2.0."""
 
 from typer.testing import CliRunner
 from skill_openapi_bridge.cli import app
@@ -13,10 +13,10 @@ def test_version_output():
     assert __version__ in result.output
 
 
-def test_serve_not_yet_implemented():
-    result = runner.invoke(app, ["serve", "fake-spec.json"])
-    assert result.exit_code == 1
-    assert "not yet implemented" in result.output
+def test_serve_missing_spec_exits_nonzero():
+    """serve with a non-existent spec file must exit non-zero."""
+    result = runner.invoke(app, ["serve", "no-such-spec.json"])
+    assert result.exit_code != 0
 
 
 def test_help():
