@@ -13,6 +13,7 @@ app = typer.Typer(
     name="skill-openapi-bridge",
     help="Bridge between agentskills.io SKILL.md packages and a local OpenAPI server.",
     no_args_is_help=True,
+    rich_markup_mode=None,  # plain text output — no ANSI codes, agent-friendly
 )
 
 

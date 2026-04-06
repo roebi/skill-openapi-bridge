@@ -1,11 +1,17 @@
 # Changelog
 
-
 ## v0.3.0 (2026-04-06)
 
-- Implement `generate` command — generate a <SKILL_NAME>-openapi-spec.json from a repo.
-- `generate` command options --repo, --skill, --commit, --branch, --output
-- - use generate to generate the json file from a skill with all its sub files, use then serve to serve this skill
+- Add `generate` command — fetches a skill from GitHub at a pinned commit and produces a valid `<skillname>-openapi-spec.json`
+- `generate --repo / --skill / --commit` pins to an exact commit SHA (reproducible, supply-chain safe)
+- `generate --branch` auto-resolves branch to commit SHA via GitHub API, then pins
+- SKILL.md body is scanned for file references (`references/`, `scripts/`, `assets/`) — only referenced files are fetched and embedded
+- Hard error if a referenced file is missing from the repo at the pinned commit
+- `build_spec()` produces a valid OpenAPI 3.1.0 JSON with all 25 routes, embedded file content, correct `ETag`/`Cache-Control`/`X-Skill-*` headers, and `info.version` = `<skill-version>+<commit[:10]>`
+- `info.version` fallback to `0.0.0+<commit[:10]>` when SKILL.md has no `version` field
+- Fix: disabled Typer/Rich ANSI color output (`rich_markup_mode=None`) — all CLI output is plain text, agent-friendly, no escape codes
+- Pure stdlib implementation for HTTP and GitHub fetching — only new runtime dependency is `pyyaml>=6.0.0`
+- 219 tests passing (48 spec contract + 106 HTTP server + 62 generate + 3 CLI smoke)
 
 ## v0.2.0 (2026-04-05)
 
