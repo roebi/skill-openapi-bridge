@@ -1,5 +1,12 @@
 # Changelog
 
+
+## v0.3.0 (2026-04-06)
+
+- Implement `generate` command — generate a <SKILL_NAME>-openapi-spec.json from a repo.
+- `generate` command options --repo, --skill, --commit, --branch, --output
+- - use generate to generate the json file from a skill with all its sub files, use then serve to serve this skill
+
 ## v0.2.0 (2026-04-05)
 
 - Implement `serve` command — serves all 25 approved routes from a `<skillname>-openapi-spec.json`

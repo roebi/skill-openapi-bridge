@@ -4,29 +4,46 @@ build-backend = "hatchling.build"
 
 [project]
 name = "skill-openapi-bridge"
-version = "0.2.0"
+version = "0.3.0"
 description = "Bridge between agentskills.io SKILL.md packages and a local OpenAPI server"
 readme = "README.md"
 license = { text = "MIT" }
 authors = [{ name = "roebi", email = "roebi@users.noreply.github.com" }]
 requires-python = ">=3.13"
-keywords = ["agentskills", "openapi", "skill", "agent", "bridge", "agentskills.io"]
+keywords = [
+    "agentskills",
+    "agentskills.io",
+    "openapi",
+    "openapi-3",
+    "skill",
+    "agent",
+    "bridge",
+    "progressive-disclosure",
+    "llm",
+    "ai-agent",
+]
 classifiers = [
-    "Development Status :: 1 - Planning",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.13",
-    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
     "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Software Development :: Code Generators",
+    "Typing :: Typed",
 ]
 dependencies = [
     "typer>=0.12.0",
+    "pyyaml>=6.0.0",
 ]
 
 [project.optional-dependencies]
 dev = [
     "pytest>=8.0.0",
+    "httpx>=0.27.0",
     "hatch>=1.12.0",
 ]
 
@@ -37,6 +54,7 @@ skill-openapi-bridge = "skill_openapi_bridge.cli:app"
 Homepage = "https://github.com/roebi/skill-openapi-bridge"
 Repository = "https://github.com/roebi/skill-openapi-bridge"
 Issues = "https://github.com/roebi/skill-openapi-bridge/issues"
+Changelog = "https://github.com/roebi/skill-openapi-bridge/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/skill_openapi_bridge"]
